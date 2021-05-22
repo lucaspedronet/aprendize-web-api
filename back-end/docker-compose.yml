@@ -9,3 +9,12 @@ services:
     environment:
       - POSTGRES_DB=home-school-dev-db
       - POSTGRES_PASSWORD=rjL4QxDG7PD0FTdgW2hT
+  redis-db:
+    container_name: redis-db
+    image: redis
+    ports:
+      - 6379:6379
+    environment:
+      - REDIS_HOST=localhost
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD=
