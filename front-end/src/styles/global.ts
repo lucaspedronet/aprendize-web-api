@@ -9,8 +9,7 @@ export default createGlobalStyle`
   }
   body {
     -webkit-font-smoothing: antialiased;
-    background-color: ${(props) => props.theme.layout.body.background};
-    color: ${(props) => props.theme.layout.body.color};
+
   }
   body, input, select,  button {
     font-family: 'Roboto', serif;
