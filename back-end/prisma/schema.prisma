@@ -1,0 +1,135 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum gender {
+  FEMININO
+  MASCULINO
+  SEM_GENERO
+}
+
+model user {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  firstName   String     @db.VarChar(50)
+  lastName    String     @db.VarChar(100)
+  email       String     @unique @db.VarChar(100)
+  gender      gender
+  isActive    Boolean    @default(true)
+  dateOfBirth DateTime   @db.Timestamp(6)
+  createdAt   DateTime   @default(now()) @db.Timestamp(6)
+  updatedAt   DateTime   @default(now()) @db.Timestamp(6)
+  deletedAt   DateTime?  @db.Timestamp(6)
+  student     student?
+  professor   professor?
+  address     address?
+}
+
+model address {
+  id      String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  street  String @db.VarChar(255)
+  city    String @db.VarChar(255)
+  state   String @db.VarChar(4)
+  zipCode String @db.VarChar(50)
+  country String @db.VarChar(255)
+  userId  String @db.Uuid
+  user    user   @relation(fields: [userId], references: [id])
+}
+
+model student {
+  id             String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  grade          String          @db.VarChar(255)
+  fathersName    String          @db.VarChar(255)
+  mothersName    String          @db.VarChar(255)
+  parentEmail    String          @db.VarChar(255)
+  userId         String          @db.Uuid
+  user           user            @relation(fields: [userId], references: [id])
+  createdAt      DateTime        @default(now()) @db.Timestamp(6)
+  updatedAt      DateTime        @default(now()) @db.Timestamp(6)
+  deletedAt      DateTime?       @db.Timestamp(6)
+  professorScore professorScore?
+  studentScore   studentScore?
+  classSchedule  classSchedule?
+}
+
+model professor {
+  id              String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  graduationLevel String          @db.VarChar(255)
+  userId          String          @db.Uuid
+  user            user            @relation(fields: [userId], references: [id])
+  professorScore  professorScore?
+  studentScore    studentScore?
+  expertise       expertise?
+  classSchedule   classSchedule?
+}
+
+model studentScore {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  score       Int       @db.Integer
+  expertiseId String    @db.Uuid
+  expertise   expertise @relation(fields: [expertiseId], references: [id])
+  professorId String    @db.Uuid
+  professor   professor @relation(fields: [professorId], references: [id])
+  studentId   String    @db.Uuid
+  student     student   @relation(fields: [studentId], references: [id])
+}
+
+model professorScore {
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  score       Int       @db.Integer
+  professorId String    @db.Uuid
+  professor   professor @relation(fields: [professorId], references: [id])
+  studentId   String    @db.Uuid
+  student     student   @relation(fields: [studentId], references: [id])
+  expertiseId String    @db.Uuid
+  expertise   expertise @relation(fields: [expertiseId], references: [id])
+}
+
+model expertise {
+  id             String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  price          Decimal         @db.Decimal(10, 2)
+  duration       Int             @db.Integer
+  professorId    String          @db.Uuid
+  professor      professor       @relation(fields: [professorId], references: [id])
+  classTypeId    String          @db.Uuid
+  classType      classType       @relation(fields: [classTypeId], references: [id])
+  gradeId        String          @db.Uuid
+  grade          grade           @relation(fields: [gradeId], references: [id])
+  professorScore professorScore?
+  studentScore   studentScore?
+}
+
+model classType {
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String         @db.VarChar(255)
+  expertise     expertise?
+  classSchedule classSchedule?
+}
+
+model grade {
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String         @db.VarChar(255)
+  expertise     expertise?
+  classSchedule classSchedule?
+}
+
+model classSchedule {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  timeSlot        Int       @db.Integer
+  meetingLink     String    @db.VarChar(255)
+  date            DateTime  @db.Date
+  reasonToDecline String    @db.Text
+  accepted        Boolean
+  professorId     String    @db.Uuid
+  professor       professor @relation(fields: [professorId], references: [id])
+  studentId       String    @db.Uuid
+  student         student   @relation(fields: [studentId], references: [id])
+  classTypeId     String    @db.Uuid
+  classType       classType @relation(fields: [classTypeId], references: [id])
+  gradeId         String    @db.Uuid
+  grade           grade     @relation(fields: [gradeId], references: [id])
+}

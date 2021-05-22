@@ -107,6 +107,7 @@
     "@edu": "dist/edu",
     "@score": "dist/score",
     "@shared": "dist/shared",
-    "@infra": "dist/infra"
+    "@infra": "dist/infra",
+    "@gateways": "dist/gateways"
   }
 }
