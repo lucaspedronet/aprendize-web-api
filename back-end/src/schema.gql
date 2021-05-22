@@ -125,7 +125,7 @@ type ProfessorScore {
 }
 
 type Query {
-  findClass(meetingLink: String!): FindClassOutput!
+  findClass(id: String!): FindClassOutput!
   listUser(id: String!): ListUserOutput!
 }
 

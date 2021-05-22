@@ -14,13 +14,11 @@ export class FindClassResolver {
   constructor(private readonly queryBus: QueryBus) {}
 
   @Query((returns) => FindClassOutput)
-  async findClass(
-    @Args('meetingLink') meetingLink: string,
-  ): Promise<FindClassOutput> {
+  async findClass(@Args('id') id: string): Promise<FindClassOutput> {
     const output = await this.queryBus.execute<
       FindClassQuery,
       Promise<FindClassOutput>
-    >(new FindClassQuery(meetingLink));
+    >(new FindClassQuery(id));
 
     return output;
   }

@@ -14,13 +14,13 @@ export class FindClassHandler implements IQueryHandler<FindClassQuery> {
   constructor(private readonly prisma: PrismaService) {}
 
   async execute(query: FindClassQuery): Promise<FindClassOutput> {
-    const { meetingLink } = query;
+    const { id } = query;
     const output = new FindClassOutput();
 
     try {
       output.classSchedule = (await this.prisma.client.classSchedule.findMany({
         where: {
-          meetingLink: meetingLink,
+          id: id,
         },
       })) as any;
       output.success = true;
