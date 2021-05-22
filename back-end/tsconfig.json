@@ -10,6 +10,23 @@
     "sourceMap": true,
     "outDir": "./dist",
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "@user/*": [
+        "src/user/*"
+      ],
+      "@edu/*": [
+        "src/edu/*"
+      ],
+      "@score/*": [
+        "src/score/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@infra/*": [
+        "src/infra/*"
+      ],
+    }
   }
 }
