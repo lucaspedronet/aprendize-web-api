@@ -14,8 +14,8 @@ export class ListProfessorClassScheduleResolver {
   constructor(private readonly queryBus: QueryBus) {}
 
   @Query((returns) => ListProfessorClassScheduleOutput)
-  async listClassType(
-    @Args('id') professorId: string,
+  async listProfessorClassSchedule(
+    @Args('professorId') professorId: string,
     @Args('date') date: Date,
   ): Promise<ListProfessorClassScheduleOutput> {
     const output = await this.queryBus.execute<

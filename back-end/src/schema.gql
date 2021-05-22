@@ -92,6 +92,18 @@ type InsertUserOutput {
   user: User
 }
 
+type ListClassTypeOutput {
+  classType: ClassType!
+  message: String
+  success: Boolean
+}
+
+type ListProfessorClassScheduleOutput {
+  classSchedule: ClassSchedule!
+  message: String
+  success: Boolean
+}
+
 type ListUserOutput {
   message: String
   success: Boolean
@@ -126,6 +138,8 @@ type ProfessorScore {
 
 type Query {
   findClass(id: String!): FindClassOutput!
+  listClassType: ListClassTypeOutput!
+  listProfessorClassSchedule(date: DateTime!, professorId: String!): ListProfessorClassScheduleOutput!
   listUser(id: String!): ListUserOutput!
 }
 
