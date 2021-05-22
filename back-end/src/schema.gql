@@ -56,6 +56,12 @@ type Expertise {
   studentScore: StudentScore
 }
 
+type FindClassOutput {
+  classSchedule: ClassSchedule!
+  message: String
+  success: Boolean
+}
+
 enum Gender {
   FEMININO
   MASCULINO
@@ -119,6 +125,7 @@ type ProfessorScore {
 }
 
 type Query {
+  findClass(id: String!): FindClassOutput!
   listUser(id: String!): ListUserOutput!
 }
 
