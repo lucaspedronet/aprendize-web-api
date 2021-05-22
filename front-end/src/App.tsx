@@ -1,9 +1,9 @@
 import React from 'react';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <h1>Hello Workd</h1>
+      <h1>Hello World</h1>
     </div>
   );
 }
