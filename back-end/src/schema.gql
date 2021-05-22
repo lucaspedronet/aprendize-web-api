@@ -1,0 +1,166 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  city: String!
+  country: String!
+  id: String!
+  state: String!
+  street: String!
+  user: User!
+  userId: String!
+  zipCode: String!
+}
+
+type ClassSchedule {
+  accepted: Boolean!
+  classType: ClassType!
+  classTypeId: String!
+  date: DateTime!
+  grade: Grade!
+  gradeId: String!
+  id: String!
+  meetingLink: String!
+  professor: Professor!
+  professorId: String!
+  reasonToDecline: String!
+  student: Student!
+  studentId: String!
+  timeSlot: Int!
+}
+
+type ClassType {
+  classSchedule: ClassSchedule
+  expertise: Expertise
+  id: String!
+  name: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Expertise {
+  classType: ClassType!
+  classTypeId: String!
+  duration: Int!
+  grade: Grade!
+  gradeId: String!
+  id: String!
+  price: Int!
+  professor: Professor!
+  professorId: String!
+  professorScore: ProfessorScore
+  studentScore: StudentScore
+}
+
+enum Gender {
+  FEMININO
+  MASCULINO
+  SEM_GENERO
+}
+
+type Grade {
+  classSchedule: ClassSchedule
+  expertise: Expertise
+  id: String!
+  name: String!
+}
+
+input InsertUserInput {
+  createdAt: DateTime!
+  dateOfBirth: DateTime!
+  deletedAt: DateTime
+  email: String!
+  firstName: String!
+  gender: Gender!
+  isActive: Boolean!
+  lastName: String!
+  updatedAt: DateTime!
+}
+
+type InsertUserOutput {
+  message: String
+  user: User
+}
+
+type ListUserOutput {
+  message: String
+  success: Boolean
+  user: [User!]!
+}
+
+type Mutation {
+  insertUser(input: InsertUserInput!): InsertUserOutput!
+}
+
+type Professor {
+  classSchedule: ClassSchedule
+  expertise: Expertise
+  graduationLevel: String!
+  id: String!
+  professorScore: ProfessorScore
+  studentScore: StudentScore
+  user: User!
+  userId: String!
+}
+
+type ProfessorScore {
+  expertise: Expertise!
+  expertiseId: String!
+  id: String!
+  professor: Professor!
+  professorId: String!
+  score: Int!
+  student: Student!
+  studentId: String!
+}
+
+type Query {
+  listUser(id: String!): ListUserOutput!
+}
+
+type Student {
+  classSchedule: ClassSchedule
+  createdAt: DateTime!
+  deletedAt: DateTime!
+  fathersName: String!
+  grade: String!
+  id: String!
+  mothersName: String!
+  parentEmail: String!
+  professorScore: ProfessorScore
+  studentScore: StudentScore
+  updatedAt: DateTime!
+  user: User!
+  userId: String!
+}
+
+type StudentScore {
+  expertise: Expertise!
+  expertiseId: String!
+  id: String!
+  professor: Professor!
+  professorId: String!
+  score: Int!
+  student: Student!
+  studentId: String!
+}
+
+type User {
+  address: Address
+  createdAt: DateTime!
+  dateOfBirth: DateTime!
+  deletedAt: DateTime
+  email: String!
+  firstName: String!
+  gender: String!
+  id: String!
+  isActive: Boolean!
+  lastName: String!
+  professor: Professor
+  student: Student
+  updatedAt: DateTime!
+}

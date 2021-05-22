@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  home-school-db:
-    container_name: home-school-db
+  aprendize-db:
+    container_name: aprendize-db
     image: postgres:latest
     ports:
       - 5433:5432
     environment:
-      - POSTGRES_DB=home-school-dev-db
+      - POSTGRES_DB=aprendize-dev-db
       - POSTGRES_PASSWORD=rjL4QxDG7PD0FTdgW2hT
   redis-db:
     container_name: redis-db
