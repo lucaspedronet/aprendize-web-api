@@ -1,7 +1,15 @@
 import React from 'react';
+import logoImag from '../../assets/Avatar.png';
 
-// import { Container } from './styles';
+import { Container, Content } from './styles';
 
-const Header: React.FC = () => <div />;
+const Header: React.FC = () => (
+  <Container>
+    <Content>
+      <img src={logoImag} alt="Apredize" />
+      <button type="button"> Criar sala</button>
+    </Content>
+  </Container>
+);
 
-export default Header;
+export { Header };

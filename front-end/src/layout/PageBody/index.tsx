@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from '../../components/Header';
 import { Container } from './styles';
 
 interface IPageBodyProps {
@@ -6,5 +7,10 @@ interface IPageBodyProps {
 }
 export const PageBody: React.FC<IPageBodyProps> = ({ children }: IPageBodyProps) => {
   console.log('');
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <Header />
+      {children}
+    </Container>
+  );
 };
