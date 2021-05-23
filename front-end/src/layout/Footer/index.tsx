@@ -1,5 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-one-expression-per-line */
+import React from 'react';
 import { FaRegCopyright } from 'react-icons/fa';
 
 import { Container, Top, Bottom, Logo, LogoLabs } from './styles';
