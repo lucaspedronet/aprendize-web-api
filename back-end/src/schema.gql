@@ -75,6 +75,25 @@ type Grade {
   name: String!
 }
 
+input InsertProfessorInput {
+  createdAt: DateTime!
+  dateOfBirth: DateTime!
+  deletedAt: DateTime
+  email: String!
+  firstName: String!
+  gender: Gender!
+  id: String!
+  isActive: Boolean!
+  lastName: String!
+  professor: ProfessorCreateNestedOneWithoutUserInput!
+  updatedAt: DateTime!
+}
+
+type InsertProfessorOutput {
+  message: String
+  user: User!
+}
+
 input InsertStudentInput {
   createdAt: DateTime!
   dateOfBirth: DateTime!
@@ -106,6 +125,12 @@ type ListProfessorClassScheduleOutput {
   success: Boolean
 }
 
+type ListProfessorOutput {
+  message: String
+  success: Boolean
+  user: User!
+}
+
 type ListStudentOutput {
   message: String
   success: Boolean
@@ -113,6 +138,7 @@ type ListStudentOutput {
 }
 
 type Mutation {
+  insertProfessor(input: InsertProfessorInput!): InsertProfessorOutput!
   insertStudent(input: InsertStudentInput!): InsertStudentOutput!
 }
 
@@ -125,6 +151,14 @@ type Professor {
   studentScore: StudentScore
   user: User!
   userId: String!
+}
+
+input ProfessorCreateNestedOneWithoutUserInput {
+  create: ProfessorCreateWithoutUserInput!
+}
+
+input ProfessorCreateWithoutUserInput {
+  graduationLevel: String!
 }
 
 type ProfessorScore {
@@ -141,6 +175,7 @@ type ProfessorScore {
 type Query {
   findClass(id: String!): FindClassOutput!
   listClassType: ListClassTypeOutput!
+  listProfessor(id: String!): ListProfessorOutput!
   listProfessorClassSchedule(date: DateTime!, professorId: String!): ListProfessorClassScheduleOutput!
   listStudent(id: String!): ListStudentOutput!
 }

@@ -6,7 +6,7 @@ import { user, student, insertStudentInput, insertStudentOutput } from './studen
 
 const gql = '/graphql';
 
-describe('List User (e2e)', () => {
+describe('Student (e2e)', () => {
     let app: INestApplication;
 
     beforeAll(async () => {
@@ -46,7 +46,6 @@ describe('List User (e2e)', () => {
                     .send(data)
                     .expect(200)
                     .expect((res) => {
-                        const { user } = insertStudentOutput;
                         expect(res.body.data.insertStudent).toEqual({
                             user: {
                                 firstName: user.firstName,

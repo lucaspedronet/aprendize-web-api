@@ -1,11 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Professor } from './professor';
+
+import { User } from './user';
 
 @ObjectType()
 export class InsertProfessorOutput {
     @Field({ nullable: true })
     message?: string;
 
-    @Field(type => Professor)
-    user: Professor;
+    @Field(type => User)
+    user: User;
 }

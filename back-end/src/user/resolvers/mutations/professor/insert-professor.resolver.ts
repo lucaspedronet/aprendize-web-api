@@ -12,16 +12,16 @@ import { InsertProfessorOutput } from '@user/models';
 /** commands **/
 import { InsertProfessorCommand } from '@user/commands';
 
-@Resolver(of => User)
+@Resolver((of) => User)
 export class InsertProfessorResolver {
-    constructor(private readonly commandBus: CommandBus) {}
+    constructor(private readonly commandBus: CommandBus) { }
 
-    @Mutation(returns => InsertProfessorInput)
+    @Mutation((returns) => InsertProfessorOutput)
     async insertProfessor(
-        @Args('id') id: InsertProfessorInput
+        @Args('input') input: InsertProfessorInput
     ): Promise<InsertProfessorOutput> {
         return await this.commandBus.execute(
-            new InsertProfessorCommand(id)
+            new InsertProfessorCommand(input)
         );
     }
 }

@@ -20,10 +20,8 @@ export class InsertStudentResolver {
   async insertStudent(
     @Args('input') input: InsertStudentInput,
   ): Promise<InsertStudentOutput> {
-    const output: InsertStudentOutput = await this.commadBus.execute(
+    return await this.commadBus.execute(
       new InsertStudentCommand(input),
     );
-
-    return output;
   }
 }
