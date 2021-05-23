@@ -1,14 +1,14 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { User } from './user';
+import { ClassSchedule } from './class-schedule';
 
 @ObjectType()
-export class ListProfessorOutput {
+export class ListClassScheduleOutput {
     @Field({ nullable: true })
     success: boolean;
 
     @Field({ nullable: true })
     message: string;
 
-    @Field((type) => User, { nullable: true })
-    user: User;
+    @Field(type => ClassSchedule, { nullable: true })
+    classType: ClassSchedule;
 }

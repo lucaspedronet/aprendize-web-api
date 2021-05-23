@@ -6,7 +6,7 @@ interface IPageBodyProps {
   children: React.ReactNode;
 }
 export const PageBody: React.FC<IPageBodyProps> = ({ children }: IPageBodyProps) => {
-  console.log('');
+  console.log(children);
   return (
     <Container>
       <Header />

@@ -7,6 +7,6 @@ export class InsertProfessorOutput {
     @Field({ nullable: true })
     message?: string;
 
-    @Field(type => User)
+    @Field(type => User, { nullable: true })
     user: User;
 }
