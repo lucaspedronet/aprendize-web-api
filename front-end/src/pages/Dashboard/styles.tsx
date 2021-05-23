@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   flex-direction: column;
@@ -49,7 +50,7 @@ export const ListTeacher = styled.div`
   margin-top: 100px;
 `;
 
-export const LinkCard = styled.a`
+export const LinkCard = styled(Link)`
   background: ${({ theme }) => theme.layout.orange.lighter};
   border-radius: 5px;
   border-color: ${({ theme }) => theme.layout.darkNeutrals.light};

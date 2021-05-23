@@ -181,7 +181,7 @@ const Dashboard: React.FC = () => {
           {teacher.map((p) => {
             console.log(p);
             return (
-              <LinkCard key={p.name} href="#">
+              <LinkCard key={p.name} to={`/profile-teacher/${p.name}`}>
                 <CardContent>
                   <img src={p.avatarImg} alt="Avatar" />
                   <div>

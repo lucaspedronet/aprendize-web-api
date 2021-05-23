@@ -35,7 +35,7 @@ class PeerConnectionSession {
     const offer = await this.peerConnection.createOffer();
     await this.peerConnection.setLocalDescription(new RTCSessionDescription(offer));
 
-    this.socket.emit('call-user', { offer, to });
+    this.socket.emit('start-call', { offer, to });
   }
 
   onConnected(callback: any) {
