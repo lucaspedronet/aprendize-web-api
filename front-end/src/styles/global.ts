@@ -9,6 +9,7 @@ export default createGlobalStyle`
   }
   body {
     -webkit-font-smoothing: antialiased;
+
   }
   body, input, select,  button {
     font-family: 'Roboto', serif;

@@ -53,4 +53,27 @@ export class ClassGateway implements OnGatewayDisconnect {
       socketId: client.id,
     });
   }
+
+  @SubscribeMessage('start-call')
+  public startCall(client: Socket, data: any): void {
+    client.to(data.to).emit('call-started', {
+      offer: data.offer,
+      socket: client.id,
+    });
+  }
+
+  @SubscribeMessage('accept-call')
+  public acceptCall(client: Socket, data: any): void {
+    client.to(data.to).emit('call-accepted', {
+      socket: client.id,
+      answer: data.answer,
+    });
+  }
+
+  @SubscribeMessage('reject-call')
+  public rejectCall(client: Socket, data: any): void {
+    client.to(data.from).emit('call-rejected', {
+      socket: client.id,
+    });
+  }
 }
