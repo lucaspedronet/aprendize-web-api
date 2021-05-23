@@ -14,13 +14,13 @@ export const Footer: React.FC = () => (
     </Top>
     <Bottom>
       <Logo>
-        <img src={aprendizeIcon} alt="H" />
+        <img src={aprendizeIcon} alt="Aprendize" />
         Aprendize
       </Logo>
       <LogoLabs>
         <FaRegCopyright />
         {new Date().getFullYear()} - Aprendize
-        <img src={aprendizeIcon} alt="H" />
+        <img src={aprendizeIcon} alt="Aprendize" />
       </LogoLabs>
     </Bottom>
   </Container>

@@ -16,6 +16,10 @@ export const Top = styled.div`
   background-color: ${(props) => props.theme.layout.footer.backgroundTop};
   padding: 0.3rem 0.7rem;
   width: 100vw;
+
+  @media screen and (min-width: 750px) {
+    padding: 0.3rem 2rem;
+  }
 `;
 
 export const Bottom = styled.div`
@@ -24,17 +28,41 @@ export const Bottom = styled.div`
   width: 100vw;
   padding: 0.8rem 0.7rem;
   background-color: ${(props) => props.theme.layout.footer.backgroundBottom};
+
+  img {
+    margin-right: 4px;
+  }
+
+  @media screen and (min-width: 750px) {
+    padding: 1rem 2rem;
+  }
 `;
 
 export const Logo = styled.div`
   display: flex;
   align-items: center;
+
+  @media screen and (min-width: 750px) {
+    margin-left: 0;
+  }
+
+  img {
+    height: 14px;
+    margin-right: 4px;
+    background-color: ${(props) => props.theme.layout.footer.backgroundLogo};
+    border-radius: 50%;
+    padding: 1px;
+  }
 `;
 
 export const LogoLabs = styled.div`
   display: flex;
   align-items: center;
   margin-left: 0;
+
+  @media screen and (min-width: 750px) {
+    margin-left: auto;
+  }
 
   img {
     height: 14px;
