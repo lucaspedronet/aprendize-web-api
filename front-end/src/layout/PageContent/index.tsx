@@ -1,7 +1,6 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { Box, Container } from './styles';
-import { TitleBar } from './TitleBar';
 
 type PageContentProps = {
   goBack?: boolean;
@@ -17,7 +16,6 @@ export const PageContent: React.FC<PageContentProps> = ({
   children,
 }: PageContentProps) => (
   <Container>
-    <TitleBar goBack={goBack} backTo={backTo} title={title} />
     <Box>{children}</Box>
   </Container>
 );
