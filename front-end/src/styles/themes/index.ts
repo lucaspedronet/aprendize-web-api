@@ -1,18 +1,5 @@
 import { DefaultTheme } from 'styled-components';
 
-const theme = {
-  background: '#F2F2F2',
-  backgroundContent: '#FdFdFd',
-  backgroundLogo: '#002A5D',
-  backgroundTools: '#E6E6E6',
-  backgroundSidebar: '#5F6A7D',
-  backgroundSidebarGroup: '#556072',
-  white: '#F7F7F7',
-  blue: '#002A5D',
-  black: '#040404',
-  shadow: '#00000029',
-};
-
 const brandColors = {
   violet: {
     dark: '#7F77D4',
@@ -43,22 +30,38 @@ const brandColors = {
     lighter: '#E4F7ED',
   },
 };
+const theme = {
+  background: '#2B2B2B',
+  backgroundContent: '#656565',
+  backgroundLogo: '#063461',
+  backgroundTools: '#232323',
+  backgroundSidebar: '#11243D',
+  backgroundSidebarGroup: '#172F4D',
+  backgroundProfilePerfil: '#656565',
+  backgroundProfileTools: '#2B2B2B',
+  white: '#FdFdFd',
+  shadow: '#cccccc29',
+};
 
-const darkTheme: DefaultTheme = {
+const defaultTheme: DefaultTheme = {
   layout: {
     body: {
-      background: brandColors.lightNeutrals.lighter,
-      color: theme.blue,
+      background: theme.background,
+      color: theme.white,
+      backgroundLogo: theme.backgroundLogo,
     },
     navbar: {
       background: theme.backgroundContent,
-      color: theme.blue,
+      color: theme.white,
       backgroundTools: theme.backgroundTools,
       shadowColor: theme.shadow,
 
       profile: {
-        perfil: { background: theme.backgroundTools, color: theme.blue },
-        tools: { background: theme.backgroundSidebar, color: theme.white },
+        perfil: {
+          background: theme.backgroundProfilePerfil,
+          color: theme.white,
+        },
+        tools: { background: theme.backgroundProfileTools, color: theme.white },
       },
     },
     sidebar: {
@@ -68,19 +71,47 @@ const darkTheme: DefaultTheme = {
     },
     content: {
       background: theme.backgroundContent,
-      color: theme.black,
+      color: theme.white,
       shadowColor: theme.shadow,
       titleBar: {
-        color: theme.blue,
+        color: theme.white,
       },
     },
     footer: {
       backgroundTop: theme.backgroundContent,
       backgroundBottom: theme.backgroundTools,
-      color: theme.blue,
-      backgroundLogo: theme.backgroundTools,
+      color: theme.white,
+      backgroundLogo: theme.white,
+    },
+    violet: {
+      dark: brandColors.violet.dark,
+      default: brandColors.violet.default,
+      lighter: brandColors.violet.lighter,
+    },
+    orange: {
+      dark: brandColors.orange.dark,
+      default: brandColors.orange.default,
+      lighter: brandColors.orange.lighter,
+    },
+    darkNeutrals: {
+      darker: brandColors.darkNeutrals.darker,
+      dark: brandColors.darkNeutrals.dark,
+      default: brandColors.darkNeutrals.default,
+      light: brandColors.darkNeutrals.light,
+      lighter: brandColors.darkNeutrals.lighter,
+    },
+    lightNeutrals: {
+      darker: brandColors.lightNeutrals.darker,
+      dark: brandColors.lightNeutrals.dark,
+      default: brandColors.lightNeutrals.default,
+      light: brandColors.lightNeutrals.light,
+      lighter: brandColors.lightNeutrals.lighter,
+    },
+    success: {
+      default: brandColors.success.default,
+      lighter: brandColors.success.lighter,
     },
   },
 };
 
-export { darkTheme, brandColors };
+export { defaultTheme };
