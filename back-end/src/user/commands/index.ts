@@ -1,5 +1,5 @@
-export { InsertUserCommand } from './insert-user.command';
+export { InsertStudentCommand } from './insert-student.command';
 
-import { InsertUserHandler } from './insert-user.handler';
+import { InsertStudentHandler } from './insert-student.handler';
 
-export const CommandHandlers = [InsertUserHandler];
+export const CommandHandlers = [InsertStudentHandler];

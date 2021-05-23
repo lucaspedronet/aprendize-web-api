@@ -3,13 +3,13 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { User } from './user';
 
 @ObjectType()
-export class ListUserOutput {
+export class ListStudentOutput {
   @Field({ nullable: true })
   success: boolean;
 
   @Field({ nullable: true })
   message: string;
 
-  @Field((type) => [User])
-  user: [User];
+  @Field((type) => User)
+  user: User;
 }

@@ -1,10 +1,10 @@
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 /** inputs and outputs */
-import { InsertUserOutput } from '@user/models';
+import { InsertStudentOutput } from '@user/models';
 
 /** commands */
-import { InsertUserCommand } from './insert-user.command';
+import { InsertStudentCommand } from './insert-student.command';
 
 /** services */
 import { PrismaService } from '@infra/services';
@@ -12,13 +12,13 @@ import { PrismaService } from '@infra/services';
 /**
  * Cria usuário
  */
-@CommandHandler(InsertUserCommand)
-export class InsertUserHandler implements ICommandHandler<InsertUserCommand> {
+@CommandHandler(InsertStudentCommand)
+export class InsertStudentHandler implements ICommandHandler<InsertStudentCommand> {
   constructor(private readonly prisma: PrismaService) {}
 
-  async execute(command: InsertUserCommand): Promise<InsertUserOutput> {
+  async execute(command: InsertStudentCommand): Promise<InsertStudentOutput> {
     const { input } = command;
-    const output = new InsertUserOutput();
+    const output = new InsertStudentOutput();
 
     try {
       output.user = (await this.prisma.user.create({
