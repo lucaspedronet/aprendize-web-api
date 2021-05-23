@@ -52,7 +52,7 @@ const NavItem = styled.div<{ selected?: boolean }>`
 
 type Props = { items: any[]; onItemSelect: (item: any) => any; isLeftSideShow: boolean };
 
-export const MoleculesLeftSide = ({ items, onItemSelect, isLeftSideShow }: Props) => {
+export const LeftSide = ({ items, onItemSelect, isLeftSideShow }: Props) => {
   const [selectedId, setSelectedId] = useState();
 
   const handleSelection = (item: any) => {

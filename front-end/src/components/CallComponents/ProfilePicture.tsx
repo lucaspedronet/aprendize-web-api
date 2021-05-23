@@ -33,7 +33,7 @@ const Container = styled.div`
 
 type Props = { picture: string };
 
-export const AtomsProfilePicture = ({ picture }: Props) => {
+export const ProfilePicture = ({ picture }: Props) => {
   return (
     <Container>
       <span>

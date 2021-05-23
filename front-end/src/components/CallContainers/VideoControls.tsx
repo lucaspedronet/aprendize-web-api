@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AtomsFullScreenButton, AtomsShareScreen } from '../Atoms';
+import { FullScreenButton, ShareScreen } from '../CallComponents';
 
 type Props = {
   isScreenSharing: boolean;
@@ -9,7 +9,7 @@ type Props = {
   isTimerStarted: boolean;
 };
 
-export const MoleculesVideoControls = ({
+export const VideoControls = ({
   isScreenSharing,
   onScreenShare,
   isFullScreen,
@@ -43,8 +43,8 @@ export const MoleculesVideoControls = ({
         width: '100%',
       }}>
       <div>
-        <AtomsShareScreen isSharing={isScreenSharing} onToggle={() => onScreenShare(!isScreenSharing)} />
-        <AtomsFullScreenButton isFullScreen={isFullScreen} onToggle={() => onFullScreen(!isFullScreen)} />
+        <ShareScreen isSharing={isScreenSharing} onToggle={() => onScreenShare(!isScreenSharing)} />
+        <FullScreenButton isFullScreen={isFullScreen} onToggle={() => onFullScreen(!isFullScreen)} />
       </div>
       <span style={{ color: 'white', fontWeight: 'bold', right: '40px', bottom: '12px', position: 'absolute' }}>
         {formatElapsedTime(elapsedTime)}

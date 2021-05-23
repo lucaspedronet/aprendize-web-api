@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button } from './AtomsButton';
+import { Button } from './VideoButton';
 
 type Props = { isSharing: boolean; onToggle: () => any };
 
-export const AtomsShareScreen = ({ isSharing, onToggle }: Props) => {
+export const ShareScreen = ({ isSharing, onToggle }: Props) => {
   return <Button onClick={() => onToggle()}>{isSharing ? 'Parar transmissão de tela' : 'Compartilhar Tela'}</Button>;
 };

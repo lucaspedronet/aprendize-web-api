@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { AtomsLogo, AtomsProfilePicture } from '../Atoms';
+import { Logo, ProfilePicture } from '../CallComponents';
 import menu from '../../assets/menu.svg';
-import { MoleculesLeftSide } from '../Molecules';
+import { LeftSide } from '../CallContainers';
 
 const HeaderContainer = styled.header`
   position: relative;
@@ -44,7 +44,7 @@ const MenuIcon = styled.input.attrs({
 
 type Props = { title: string; picture: string; navItems: any[]; onNavItemSelect: (user: any) => any };
 
-export const OrganismsHeader = ({ title, picture, navItems, onNavItemSelect }: Props) => {
+export const Header = ({ title, picture, navItems, onNavItemSelect }: Props) => {
   const [isLeftSideShow, setLeftSideShow] = useState(false);
   return (
     <>
@@ -52,18 +52,14 @@ export const OrganismsHeader = ({ title, picture, navItems, onNavItemSelect }: P
         <div className="toolbar">
           <MenuIcon onClick={() => setLeftSideShow((flag) => !flag)} />
 
-          <AtomsLogo>{title}</AtomsLogo>
+          <Logo>{title}</Logo>
 
           <div style={{ flexGrow: 1 }} />
-          <AtomsProfilePicture picture={picture} />
+          <ProfilePicture picture={picture} />
         </div>
       </HeaderContainer>
       {navItems && (
-        <MoleculesLeftSide
-          isLeftSideShow={isLeftSideShow}
-          onItemSelect={(user) => onNavItemSelect(user)}
-          items={navItems}
-        />
+        <LeftSide isLeftSideShow={isLeftSideShow} onItemSelect={(user) => onNavItemSelect(user)} items={navItems} />
       )}
     </>
   );

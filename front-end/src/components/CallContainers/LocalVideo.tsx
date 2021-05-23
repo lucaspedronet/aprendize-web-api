@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AtomsVideo } from '../Atoms';
+import { Video } from '../CallComponents';
 
-export const MoleculesLocalVideo = styled(AtomsVideo)`
+export const LocalVideo = styled(Video)`
   position: relative;
   width: 100%;
   background: black;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { OrganismsHeader, OrganismsMain } from '../../components/Organisms';
+import { Header, Main } from '../../components/CallPage';
 import logo from '../../assets/Avatar.png';
-import { MoleculesLocalVideo, MoleculesRemoteVideo, MoleculesVideoControls } from '../../components/Molecules';
+import { LocalVideo, RemoteVideo, VideoControls } from '../../components/CallContainers';
 import { createPeerConnectionContext } from '../../utils/video-call';
 import { useParams } from 'react-router-dom';
 
@@ -149,24 +149,24 @@ const Room: React.FC = () => {
 
   return (
     <div className={'container'}>
-      <OrganismsHeader
+      <Header
         onNavItemSelect={(user) => videoConnection.callUser(user.id)}
         navItems={connectedUsers.map((user) => ({ id: user, title: user }))}
         title="Aprendize"
         picture={logo}
       />
 
-      <OrganismsMain ref={mainRef}>
-        <MoleculesRemoteVideo ref={remoteVideo} autoPlay />
-        <MoleculesLocalVideo ref={localVideo} autoPlay muted />
-        <MoleculesVideoControls
+      <Main ref={mainRef}>
+        <RemoteVideo ref={remoteVideo} autoPlay />
+        <LocalVideo ref={localVideo} autoPlay muted />
+        <VideoControls
           isScreenSharing={Boolean(displayMediaStream)}
           onScreenShare={handleScreenSharing}
           isFullScreen={isFullScreen}
           onFullScreen={handleFullScreen}
           isTimerStarted={startTimer}
         />
-      </OrganismsMain>
+      </Main>
     </div>
   );
 };
