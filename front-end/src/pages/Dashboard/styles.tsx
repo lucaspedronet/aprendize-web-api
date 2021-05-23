@@ -55,6 +55,7 @@ export const LinkCard = styled.a`
   border-color: ${({ theme }) => theme.layout.darkNeutrals.light};
   border-width: 50px;
   max-width: 100%;
+  max-height: 300px;
   padding: 24px;
   margin: 20px;
 
@@ -153,4 +154,10 @@ export const Description = styled.p`
   align-self: stretch;
   flex-grow: 0;
   margin: 2px 0px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
