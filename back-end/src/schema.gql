@@ -56,6 +56,12 @@ type Expertise {
   studentScore: StudentScore
 }
 
+type FindClassOutput {
+  classSchedule: ClassSchedule!
+  message: String
+  success: Boolean
+}
+
 enum Gender {
   FEMININO
   MASCULINO
@@ -84,6 +90,18 @@ input InsertUserInput {
 type InsertUserOutput {
   message: String
   user: User
+}
+
+type ListClassTypeOutput {
+  classType: ClassType!
+  message: String
+  success: Boolean
+}
+
+type ListProfessorClassScheduleOutput {
+  classSchedule: ClassSchedule!
+  message: String
+  success: Boolean
 }
 
 type ListUserOutput {
@@ -119,6 +137,9 @@ type ProfessorScore {
 }
 
 type Query {
+  findClass(id: String!): FindClassOutput!
+  listClassType: ListClassTypeOutput!
+  listProfessorClassSchedule(date: DateTime!, professorId: String!): ListProfessorClassScheduleOutput!
   listUser(id: String!): ListUserOutput!
 }
 
