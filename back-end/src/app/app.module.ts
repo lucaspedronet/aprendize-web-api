@@ -17,6 +17,6 @@ import { UserModule } from '@user/user.module';
     ScoreModule,
   ],
   controllers: [],
-  providers: [ClassGateway],
+  // providers: [ClassGateway],
 })
 export class AppModule {}

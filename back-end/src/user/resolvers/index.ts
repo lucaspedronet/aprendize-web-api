@@ -1,4 +1,7 @@
-import { InsertUserResolver } from './mutations/user/insert-user.resolver';
-import { ListUserResolver } from './queries/user/list-user.resolver';
+import { InsertStudentResolver } from './mutations/user/insert-student.resolver';
+import { ListStudentResolver } from './queries/user/list-student.resolver';
 
-export const Resolvers = [InsertUserResolver, ListUserResolver];
+export const Resolvers = [
+    InsertStudentResolver,
+    ListStudentResolver
+];
