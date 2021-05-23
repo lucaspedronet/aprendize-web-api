@@ -6,9 +6,6 @@ import { ListStudentOutput } from '@user/models';
 /** queries */
 import { ListStudentQuery } from './list-student.query';
 
-/** services */
-import { PrismaService } from '@infra/services';
-
 /** repositories */
 import { StudentRepository } from '@user/repositories/student.repository';
 
@@ -25,13 +22,11 @@ export class ListStudentHandler implements IQueryHandler<ListStudentQuery> {
     try {
       output.user = (await this.studentRepo.listStudent(id)) as any;
       output.success = true;
-
-      return output;
     } catch (error) {
       output.success = false;
       output.message = error.message;
-
-      return output;
     }
+
+    return output;
   }
 }
