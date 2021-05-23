@@ -25,13 +25,13 @@
     ],
     "rules": {
       "prettier/prettier": [
-        "error",
+        "warn",
         {
           "endOfLine": "auto"
         }
       ],
       "no-unused-vars": [
-        "error", {
+        "warn", {
           "vars": "all",
           "args": "none",
           "ignoreRestSiblings": false
@@ -60,7 +60,7 @@
       "jsx-a11y/label-has-associated-control": "off",
       "import/prefer-default-export": "off",
       "import/extensions": [
-        "error",
+        "warn",
         "ignorePackages",
         {
           "ts": "never",
@@ -74,4 +74,3 @@
       }
     }
   }
-  

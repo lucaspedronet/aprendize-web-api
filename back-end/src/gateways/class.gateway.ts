@@ -6,17 +6,20 @@ import {
 } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 import { Server } from 'ws';
+import { Logger } from '@nestjs/common';
 
 type OpenSockets = {
   room: string;
   id: string;
 };
 
-@WebSocketGateway({ namespace: 'classes' })
+@WebSocketGateway({ namespace: 'class' })
 export class ClassGateway implements OnGatewayDisconnect {
   @WebSocketServer() server: Server;
 
   private openSockets: OpenSockets[] = [];
+
+  private logger: Logger = new Logger('MessageGateway');
 
   @SubscribeMessage('joinClass')
   public joinClass(client: Socket, room: string): void {
@@ -36,6 +39,8 @@ export class ClassGateway implements OnGatewayDisconnect {
         users: [client.id],
       });
     }
+
+    this.logger.log(`User ${client.id} joined the class #${room}`);
   }
 
   public handleDisconnect(client: Socket): void {
