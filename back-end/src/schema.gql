@@ -91,7 +91,7 @@ input InsertProfessorInput {
 
 type InsertProfessorOutput {
   message: String
-  user: User!
+  user: User
 }
 
 input InsertStudentInput {
@@ -110,7 +110,7 @@ input InsertStudentInput {
 
 type InsertStudentOutput {
   message: String
-  user: User!
+  user: User
 }
 
 type ListClassTypeOutput {
@@ -128,13 +128,13 @@ type ListProfessorClassScheduleOutput {
 type ListProfessorOutput {
   message: String
   success: Boolean
-  user: User!
+  user: User
 }
 
 type ListStudentOutput {
   message: String
   success: Boolean
-  user: User!
+  user: User
 }
 
 type Mutation {

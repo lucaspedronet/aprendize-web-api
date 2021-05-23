@@ -5,3 +5,5 @@ export { ClassSchedule } from './class-schedule';
 export { FindClassOutput } from './find-class-output';
 export { ListClassTypeOutput } from './list-class-type-output';
 export { ListProfessorClassScheduleOutput } from './list-professor-class-schedule-output';
+export { InsertClassScheduleOutput } from './insert-class-schedule-output';
+export { ListClassScheduleOutput } from './list-class-schedule-output';
