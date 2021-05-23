@@ -6,7 +6,7 @@ import { ClassSchedule } from '@edu/models';
 @ObjectType()
 export class Student {
   @Field()
-  id: string;
+  id?: string;
 
   @Field()
   grade: string;
@@ -21,7 +21,7 @@ export class Student {
   parentEmail: string;
 
   @Field()
-  userId: string;
+  userId?: string;
 
   @Field((type) => Date)
   createdAt: Date;
@@ -30,17 +30,17 @@ export class Student {
   updatedAt: Date;
 
   @Field((type) => Date)
-  deletedAt: Date;
+  deletedAt?: Date;
 
   @Field((type) => User)
-  user: User;
+  user?: User;
 
   @Field((type) => ProfessorScore, { nullable: true })
-  professorScore: ProfessorScore;
+  professorScore?: ProfessorScore;
 
   @Field((type) => StudentScore, { nullable: true })
-  studentScore: StudentScore;
+  studentScore?: StudentScore;
 
   @Field((type) => ClassSchedule, { nullable: true })
-  classSchedule: ClassSchedule;
+  classSchedule?: ClassSchedule;
 }

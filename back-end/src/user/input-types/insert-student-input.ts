@@ -1,6 +1,7 @@
 import { InputType, Field, registerEnumType } from '@nestjs/graphql';
+import {StudentCreateNestedOneWithoutUserInput} from './student-create-nested-one-without-user-input'
 
-enum Gender {
+export enum Gender {
   FEMININO = 'FEMININO',
   MASCULINO = 'MASCULINO',
   SEM_GENERO = 'SEM_GENERO',
@@ -11,7 +12,10 @@ registerEnumType(Gender, {
 });
 
 @InputType()
-export class InsertUserInput {
+export class InsertStudentInput {
+  @Field()
+  id?: string;
+  
   @Field()
   firstName: string;
 
@@ -21,7 +25,7 @@ export class InsertUserInput {
   @Field()
   email: string;
 
-  @Field((type) => Gender)
+  @Field(type => Gender)
   gender: Gender;
 
   @Field((type) => Date)
@@ -37,5 +41,8 @@ export class InsertUserInput {
   updatedAt: Date;
 
   @Field((type) => Date, { nullable: true })
-  deletedAt: Date;
+  deletedAt?: Date;
+
+  @Field((type) => StudentCreateNestedOneWithoutUserInput)
+  student: StudentCreateNestedOneWithoutUserInput;
 }

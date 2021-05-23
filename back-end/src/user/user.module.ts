@@ -12,8 +12,16 @@ import { CommandHandlers } from '@user/commands';
 /** queries */
 import { QueriesHandlers } from '@user/queries';
 
+/** repositories */
+import { Repositories } from '@user/repositories';
+
 @Module({
   imports: [CqrsModule, InfraModule],
-  providers: [...Resolvers, ...CommandHandlers, ...QueriesHandlers],
+  providers: [
+    ...Resolvers,
+    ...CommandHandlers,
+    ...QueriesHandlers,
+    ...Repositories,
+  ],
 })
 export class UserModule {}
