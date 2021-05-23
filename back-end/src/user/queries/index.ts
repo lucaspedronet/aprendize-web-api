@@ -1,5 +1,5 @@
-export { ListUserQuery } from './list-user.query';
+export { ListStudentQuery } from './list-student.query';
 
-import { ListUserHandler } from './list-user.handler';
+import { ListStudentHandler } from './list-student.handler';
 
-export const QueriesHandlers = [ListUserHandler];
+export const QueriesHandlers = [ListStudentHandler];
