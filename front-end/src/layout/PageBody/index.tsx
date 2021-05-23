@@ -1,4 +1,10 @@
 import React from 'react';
 import { Container } from './styles';
 
-export const PageBody: React.FC = ({ children }) => <Container>{children}</Container>;
+interface IPageBodyProps {
+  children: React.ReactNode;
+}
+export const PageBody: React.FC<IPageBodyProps> = ({ children }: IPageBodyProps) => {
+  console.log('');
+  return <Container>{children}</Container>;
+};
