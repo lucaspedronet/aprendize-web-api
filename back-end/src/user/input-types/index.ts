@@ -1,1 +1,2 @@
-export { InsertStudentInput, Gender } from './insert-student-input';
+export { InsertStudentInput } from './insert-student-input';
+export { InsertProfessorInput } from './insert-professor-input';

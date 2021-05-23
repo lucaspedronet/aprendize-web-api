@@ -1,27 +1,27 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@infra/services';
 import { user } from '@prisma/client';
-import { InsertStudentInput } from '@user/input-types';
+import { InsertProfessorInput } from '@user/input-types';
 
 @Injectable()
-export class StudentRepository {
+export class ProfessorRepository {
     constructor(
         private readonly prisma: PrismaService
-    ) { }
+    ) {}
 
-    async create(input: InsertStudentInput): Promise<user | null> {
+    async create(input: InsertProfessorInput): Promise<user | null> {
         return await this.prisma.user.create({
-            data: { ...input }
+            data: {...input}
         });
     }
 
-    async listStudent(id: string): Promise<user | null> {
+    async listProfessor(id: string) {
         return await this.prisma.user.findUnique({
             where: {
                 id,
             },
             include: {
-                student: true,
+                professor: true,
             }
         });
     }

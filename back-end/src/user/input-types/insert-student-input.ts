@@ -1,15 +1,6 @@
-import { InputType, Field, registerEnumType } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
+import { Gender } from '@user/enums';
 import {StudentCreateNestedOneWithoutUserInput} from './student-create-nested-one-without-user-input'
-
-export enum Gender {
-  FEMININO = 'FEMININO',
-  MASCULINO = 'MASCULINO',
-  SEM_GENERO = 'SEM_GENERO',
-}
-
-registerEnumType(Gender, {
-  name: 'Gender',
-});
 
 @InputType()
 export class InsertStudentInput {

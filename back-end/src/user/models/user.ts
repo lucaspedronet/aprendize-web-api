@@ -2,7 +2,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 import { Student } from './student';
 import { Professor } from './professor';
 import { Address } from './address';
-import { Gender } from '@user/input-types';
+import { Gender } from '@user/enums';
 
 @ObjectType()
 export class User {

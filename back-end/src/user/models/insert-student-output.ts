@@ -1,7 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 
 import { User } from './user';
-import { Student } from './student';
 
 @ObjectType()
 export class InsertStudentOutput {
