@@ -2,11 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../../src/app/app.module';
 import { INestApplication } from '@nestjs/common';
-import { user, student, insertStudentInput, insertStudentOutput } from './student';
+import { user, professor, insertProfessorInput, insertProfessorOutput } from './professor';
 
 const gql = '/graphql';
 
-describe('Student (e2e)', () => {
+describe('Professor (e2e)', () => {
     let app: INestApplication;
 
     beforeAll(async () => {
@@ -23,12 +23,12 @@ describe('Student (e2e)', () => {
     });
 
     describe(gql, () => {
-        describe('Student', () => {
-            it('Insert Student', () => {
+        describe('Professor', () => {
+            it('Insert Professor', () => {
                 const data = {
                     query: `
-                      mutation ($input: InsertStudentInput!){
-                        insertStudent(input: $input) {
+                      mutation ($input: InsertProfessorInput!){
+                        insertProfessor(input: $input) {
                           user {
                             firstName
                             lastName
@@ -37,7 +37,7 @@ describe('Student (e2e)', () => {
                       }
                     `,
                     variables: {
-                        input: insertStudentInput,
+                        input: insertProfessorInput,
                     },
                 };
 
@@ -46,7 +46,8 @@ describe('Student (e2e)', () => {
                     .send(data)
                     .expect(200)
                     .expect((res) => {
-                        expect(res.body.data.insertStudent).toEqual({
+                        const { user } = insertProfessorOutput;
+                        expect(res.body.data.insertProfessor).toEqual({
                             user: {
                                 firstName: user.firstName,
                                 lastName: user.lastName,
@@ -54,24 +55,24 @@ describe('Student (e2e)', () => {
                         });
                     });
             });
-            it('List Student', () => {
+
+            it('List Professor', () => {
                 const data = {
                     query: `
                         query ($id: String!){
-                            listStudent(id: $id){
+                            listProfessor(id: $id){
                                 user {
                                     firstName
                                     lastName
-                                    student {
-                                        fathersName
-                                        mothersName
+                                    professor {
+                                        graduationLevel
                                     }
                                 }
                             }
                         }
                     `,
                     variables: {
-                        id: insertStudentOutput.user.id,
+                        id: insertProfessorOutput.user.id,
                     },
                 };
 
@@ -80,12 +81,11 @@ describe('Student (e2e)', () => {
                     .send(data)
                     .expect(200)
                     .expect((res) => {
-                        expect(res.body.data.listStudent.user).toEqual({
+                        expect(res.body.data.listProfessor.user).toEqual({
                             firstName: user.firstName,
                             lastName: user.lastName,
-                            student: {
-                                fathersName: student.fathersName,
-                                mothersName: student.mothersName,
+                            professor: {
+                                graduationLevel: professor.graduationLevel,
                             }
                         });
                     });

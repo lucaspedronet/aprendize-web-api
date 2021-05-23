@@ -1,13 +1,14 @@
 import * as faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
 import { InsertStudentOutput } from '@user/models';
-import { InsertStudentInput, Gender } from '@user/input-types';
+import { Gender } from '@user/enums';
+import { InsertStudentInput } from '@user/input-types';
 
 export const user = {
     id: uuidv4(),
     email: faker.internet.email(),
-    firstName: "Fulano",
-    lastName: "Sobrenome do Fulano",
+    firstName: "Aluno Fulano",
+    lastName: "Sobrenome do Fulano Aluno",
     gender: Gender.MASCULINO,
     dateOfBirth: new Date("2021-05-17"),
     isActive: true,
