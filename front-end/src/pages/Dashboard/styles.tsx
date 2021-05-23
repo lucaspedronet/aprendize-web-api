@@ -161,3 +161,11 @@ export const Description = styled.p`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 `;
+
+export const Favorite = styled.button`
+  margin: 0;
+  padding: 0;
+
+  text-decoration: none;
+  border: 0 transparent;
+`;

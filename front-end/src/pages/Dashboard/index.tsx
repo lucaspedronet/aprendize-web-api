@@ -1,11 +1,13 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 /* eslint-disable object-curly-newline */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ImLocation, ImStarFull } from 'react-icons/im';
 import { BsFillHeartFill } from 'react-icons/bs';
 import { PageContent } from '../../layout/PageContent';
 
 import { api } from '../../services/api';
+import { formatMoney } from '../../utils/formatMoney';
 
 import avatarImg from '../../assets/AvatarTeacher.svg';
 import avatarImg2 from '../../assets/Avatar-02.svg';
@@ -23,6 +25,7 @@ import {
   Hour,
   Evaluation,
   Description,
+  Favorite,
 } from './styles';
 
 interface ITeacher {
@@ -36,6 +39,7 @@ interface ITeacher {
   hour: number;
   evaluation: number;
   avatarImg: string;
+  favorite: boolean;
 }
 
 const data: ITeacher[] = [
@@ -51,6 +55,7 @@ const data: ITeacher[] = [
     hour: 40.5,
     evaluation: 4.5,
     avatarImg,
+    favorite: false,
   },
   {
     name: 'Gustavo',
@@ -64,6 +69,7 @@ const data: ITeacher[] = [
     hour: 140.5,
     evaluation: 4.1,
     avatarImg: avatarImg2,
+    favorite: false,
   },
   {
     name: 'Lucas',
@@ -77,6 +83,7 @@ const data: ITeacher[] = [
     hour: 60.5,
     evaluation: 4.8,
     avatarImg: avatarImg4,
+    favorite: false,
   },
   {
     name: 'Beatriz Amorim Silva',
@@ -89,6 +96,7 @@ const data: ITeacher[] = [
     hour: 110.5,
     evaluation: 5,
     avatarImg: avatarImg3,
+    favorite: false,
   },
   {
     name: 'Mónica Ferraz',
@@ -101,14 +109,28 @@ const data: ITeacher[] = [
     hour: 110.5,
     evaluation: 5,
     avatarImg: avatarImg3,
+    favorite: false,
   },
 ];
 
 const Dashboard: React.FC = () => {
   const [teacher, setTeacher] = useState<ITeacher[]>([]);
   const [searchTeacher, setSearchTeacher] = useState<string>('');
+  // const [toggleFavorite, setToggleFavorite] = useState<boolean>(false);
 
   // function handlerSearchTeacher() {}
+  const handlerFavorite = useCallback((id) => {
+    setTeacher((params) => {
+      const teacherFavorite = params.findIndex((p) => p.name === id);
+      if (teacherFavorite !== -1) {
+        const formatted = params[teacherFavorite];
+        params[teacherFavorite].favorite = !formatted.favorite;
+
+        return params;
+      }
+      return params;
+    });
+  }, []);
 
   useEffect(() => {
     setTeacher(data);
@@ -168,10 +190,12 @@ const Dashboard: React.FC = () => {
                         <ImStarFull size={20} color="#FFBF00" />
                         <Evaluation>{p.evaluation}</Evaluation>
                       </div>
-                      <BsFillHeartFill size={20} color="#F78057" />
+                      <Favorite type="button" onClick={() => handlerFavorite(p.name)}>
+                        <BsFillHeartFill size={20} color={p.favorite ? '#F78057' : '#fff'} />
+                      </Favorite>
                     </ContainerEvaluation>
                     <NameText>{p.name}</NameText>
-                    <Hour>{`${p.hour} /h`}</Hour>
+                    <Hour>{`${formatMoney(p.hour)} /h`}</Hour>
                     <div>
                       <ImLocation />
                       <strong>{p.city}</strong>

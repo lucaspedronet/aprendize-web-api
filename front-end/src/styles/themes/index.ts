@@ -79,7 +79,7 @@ const defaultTheme: DefaultTheme = {
     },
     footer: {
       backgroundTop: theme.backgroundContent,
-      backgroundBottom: theme.backgroundTools,
+      backgroundBottom: brandColors.violet.dark,
       color: theme.white,
       backgroundLogo: theme.white,
     },
